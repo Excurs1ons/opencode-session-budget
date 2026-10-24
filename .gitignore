@@ -1,0 +1,6 @@
+node_modules/
+!test/shim/node_modules/
+test/shim/index.ts
+test/shim/rpc.ts
+*.log
+.DS_Store

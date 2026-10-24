@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Opencode-DCP/opencode-dynamic-context-pruning/master/dcp.schema.json",
+  // Companion settings for @tarquinen/opencode-dcp. `session-budget` force-invokes
+  // `/dcp compress` once a session passes its budget, so DCP's own soft nudge line
+  // should sit just below the default 30% tier: the model gets a chance to compress
+  // itself before a turn is spent doing it for it.
+  "compress": {
+    "mode": "range",
+    "permission": "allow",
+    "showCompression": true,
+    "summaryBuffer": true,
+    // 90% of the default 30% tier.
+    "maxContextLimit": "27%",
+    // Soft floor for turn/iteration reminders: half the default tier.
+    "minContextLimit": "15%",
+    "nudgeFrequency": 10,
+    "iterationNudgeThreshold": 15,
+    "nudgeForce": "soft",
+    "protectedTools": [],
+    // Keep user messages verbatim: hard constraints in the prompt must not be
+    // summarized away.
+    "protectUserMessages": true
+  },
+  "commands": {
+    "enabled": true,
+    "protectedTools": []
+  },
+  "enabled": true,
+  // DCP registers `compress` as a primary-only tool, so child sessions have no
+  // compression tool at all. session-budget skips DCP for subagents for the same
+  // reason and goes straight to native compaction.
+  "experimental": {
+    "allowSubAgents": false
+  },
+  "manualMode": {
+    "enabled": false,
+    "automaticStrategies": true
+  }
+}

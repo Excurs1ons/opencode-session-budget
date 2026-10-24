@@ -1,0 +1,18 @@
+{
+  "name": "opencode-session-budget",
+  "version": "0.1.0",
+  "private": true,
+  "description": "OpenCode plugin: compact the conversation at a fraction of the model window, DCP-first with native compaction as fallback",
+  "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./tui": "./tui.tsx"
+  },
+  "scripts": {
+    "test": "bun test/run.ts"
+  },
+  "devDependencies": {
+    "@opencode/plugin": "2.1.4",
+    "typescript": "^5.8.2"
+  }
+}
